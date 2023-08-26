@@ -10,10 +10,19 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
 
 
 ```
-git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic
-./mvnw package
+git clone https://github.com/frankzhu2003/spring-petclinic-main-prometheus
+cd spring-petclinic-main-prometheus
+./mvnw package -DskipTests
 java -jar target/*.jar
+```
+The application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/
+
+You can access the metrics here: http://localhost:8080/actuator/prometheus
+```
+# HELP owner_create_time_seconds Time taken to create owner
+# TYPE owner_create_time_seconds summary
+owner_create_time_seconds_count{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processCreationForm",} 1.0
+owner_create_time_seconds_sum{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processCreationForm",} 10.066176708
 ```
 
 You can then access petclinic here: http://localhost:8080/
