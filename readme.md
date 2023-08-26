@@ -21,6 +21,12 @@ java -jar target/*.jar
 The application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/
 
 ```
+
+    /** OwnerController.java
+     *
+     * Add random delay between 250ms to 10s
+     *
+     */
     @GetMapping("/owners")
 	@Timed(value = "owner.find.time", description = "Time taken to find owner")
 	public String processFindForm(@RequestParam(defaultValue = "1") int page, Owner owner, BindingResult result,
