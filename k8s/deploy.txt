@@ -1,0 +1,2 @@
+kubectl create deployment spring-petclinic --image=spring-petclinic:2.7.3
+kubectl expose deployment spring-petclinic --type=ClusterIP --port=8080
