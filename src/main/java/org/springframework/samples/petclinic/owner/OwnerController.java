@@ -36,6 +36,8 @@ import org.springframework.web.servlet.ModelAndView;
 import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.MeterRegistry;
 
+import java.util.Random;
+
 // import io.prometheus.client.Counter;
 
 /**
@@ -88,12 +90,24 @@ class OwnerController {
 	@GetMapping("/owners/find")
 	public String initFindForm(Map<String, Object> model) {
 		model.put("owner", new Owner());
+
 		return "owners/findOwners";
 	}
 
 	@GetMapping("/owners")
+	@Timed(value = "owner.find.time", description = "Time taken to find owner")
 	public String processFindForm(@RequestParam(defaultValue = "1") int page, Owner owner, BindingResult result,
 			Model model) {
+
+		Random rn = new Random();
+
+		try {
+			Thread.sleep((rn.nextInt(10) + 1) * 250);
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 		// allow parameterless GET request for /owners to return all records
 		if (owner.getLastName() == null) {
 			owner.setLastName(""); // empty string signifies broadest possible search

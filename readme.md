@@ -12,17 +12,40 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
 ```
 git clone https://github.com/frankzhu2003/spring-petclinic-main-prometheus
 cd spring-petclinic-main-prometheus
+
+mvn spring-javaformat:apply
 ./mvnw package -DskipTests
 java -jar target/*.jar
+
 ```
 The application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/
 
+```
+    @GetMapping("/owners")
+	@Timed(value = "owner.find.time", description = "Time taken to find owner")
+	public String processFindForm(@RequestParam(defaultValue = "1") int page, Owner owner, BindingResult result,
+			Model model) {
+
+		Random rn = new Random();
+
+		try {
+			Thread.sleep((rn.nextInt(10) + 1) * 250);
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+```
+
 You can access the metrics here: http://localhost:8080/actuator/prometheus
 ```
-# HELP owner_create_time_seconds Time taken to create owner
-# TYPE owner_create_time_seconds summary
-owner_create_time_seconds_count{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processCreationForm",} 1.0
-owner_create_time_seconds_sum{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processCreationForm",} 10.066176708
+# HELP owner_find_time_seconds_max Time taken to find owner
+# TYPE owner_find_time_seconds_max gauge
+owner_find_time_seconds_max{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 2.003878333
+# HELP owner_find_time_seconds Time taken to find owner
+# TYPE owner_find_time_seconds summary
+owner_find_time_seconds_count{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 9.0
+owner_find_time_seconds_sum{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 11.103357166
 ```
 
 You can then access petclinic here: http://localhost:8080/
