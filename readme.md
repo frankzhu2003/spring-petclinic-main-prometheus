@@ -13,7 +13,7 @@ Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) applicatio
 git clone https://github.com/frankzhu2003/spring-petclinic-main-prometheus
 cd spring-petclinic-main-prometheus
 
-mvn spring-javaformat:apply
+./mvnw spring-javaformat:apply
 ./mvnw package -DskipTests
 java -jar target/*.jar
 
