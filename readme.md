@@ -47,7 +47,7 @@ This application is modified according to https://www.tutorialworks.com/spring-b
 
 ### Generate testing traffic
 
-To generate consistent traffic, run the curl every 15s
+To generate consistent demo traffic, run the curl every 15s
 ```
 while sleep 15; do curl 'http://localhost:8080/owners'; done
 ```
