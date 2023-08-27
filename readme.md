@@ -18,7 +18,9 @@ cd spring-petclinic-main-prometheus
 java -jar target/*.jar
 
 ```
-### The application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/
+### Code Changes
+
+This application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/. 
 
 ```
 
@@ -43,12 +45,16 @@ java -jar target/*.jar
 
 ```
 
-### To generate consistent traffic, run the curl every 15s
+### Generate testing traffic
+
+To generate consistent traffic, run the curl every 15s
 ```
 while sleep 15; do curl 'http://localhost:8080/owners'; done
 ```
 
-### You can access the metrics here: http://localhost:8080/actuator/prometheus
+### Access the custom metrics
+
+You can access the metrics here: http://localhost:8080/actuator/prometheus
 ```
 # HELP owner_find_time_seconds_max Time taken to find owner
 # TYPE owner_find_time_seconds_max gauge
