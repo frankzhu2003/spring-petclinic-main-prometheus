@@ -43,12 +43,12 @@ The application is modified according to https://www.tutorialworks.com/spring-bo
 
 ```
 
-To generate consistent traffic, run the curl every 15s
+### To generate consistent traffic, run the curl every 15s
 ```
 while sleep 15; do curl 'http://localhost:8080/owners'; done
 ```
 
-You can access the metrics here: http://localhost:8080/actuator/prometheus
+### You can access the metrics here: http://localhost:8080/actuator/prometheus
 ```
 # HELP owner_find_time_seconds_max Time taken to find owner
 # TYPE owner_find_time_seconds_max gauge
@@ -59,7 +59,7 @@ owner_find_time_seconds_count{class="org.springframework.samples.petclinic.owner
 owner_find_time_seconds_sum{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 11.103357166
 ```
 
-You can then access petclinic here: http://localhost:8080/
+### You can then access petclinic here: http://localhost:8080/
 
 <img width="1042" alt="petclinic-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
 
