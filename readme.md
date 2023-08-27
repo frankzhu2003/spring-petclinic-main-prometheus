@@ -26,7 +26,7 @@ This application is modified according to https://www.tutorialworks.com/spring-b
 
     /** OwnerController.java
      *
-     * Add random delay between 250ms to 2.5s
+     * Add random delay between 250ms to 3s
      *
      */
     @GetMapping("/owners")
