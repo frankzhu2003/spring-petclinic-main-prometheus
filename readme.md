@@ -18,6 +18,27 @@ cd spring-petclinic-main-prometheus
 java -jar target/*.jar
 
 ```
+
+### Generate demo traffic
+
+To generate consistent demo traffic, run the curl every 5s
+```
+while sleep 5; do curl 'http://localhost:8080/owners'; done
+```
+
+### Access the custom metrics
+
+You can access the metrics here: http://localhost:8080/actuator/prometheus
+```
+# HELP owner_find_time_seconds_max Time taken to find owner
+# TYPE owner_find_time_seconds_max gauge
+owner_find_time_seconds_max{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 2.003878333
+# HELP owner_find_time_seconds Time taken to find owner
+# TYPE owner_find_time_seconds summary
+owner_find_time_seconds_count{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 9.0
+owner_find_time_seconds_sum{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 11.103357166
+```
+
 ### Code Changes
 
 This application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/. 
@@ -43,26 +64,6 @@ This application is modified according to https://www.tutorialworks.com/spring-b
 			e.printStackTrace();
 		}
 
-```
-
-### Generate demo traffic
-
-To generate consistent demo traffic, run the curl every 5s
-```
-while sleep 5; do curl 'http://localhost:8080/owners'; done
-```
-
-### Access the custom metrics
-
-You can access the metrics here: http://localhost:8080/actuator/prometheus
-```
-# HELP owner_find_time_seconds_max Time taken to find owner
-# TYPE owner_find_time_seconds_max gauge
-owner_find_time_seconds_max{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 2.003878333
-# HELP owner_find_time_seconds Time taken to find owner
-# TYPE owner_find_time_seconds summary
-owner_find_time_seconds_count{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 9.0
-owner_find_time_seconds_sum{class="org.springframework.samples.petclinic.owner.OwnerController",exception="none",method="processFindForm",} 11.103357166
 ```
 
 ### You can then access petclinic here: http://localhost:8080/
