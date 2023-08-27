@@ -45,7 +45,7 @@ This application is modified according to https://www.tutorialworks.com/spring-b
 
 ```
 
-### Generate testing traffic
+### Generate demo traffic
 
 To generate consistent demo traffic, run the curl every 15s
 ```
