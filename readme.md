@@ -18,7 +18,7 @@ cd spring-petclinic-main-prometheus
 java -jar target/*.jar
 
 ```
-The application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/
+### The application is modified according to https://www.tutorialworks.com/spring-boot-prometheus-micrometer/
 
 ```
 
