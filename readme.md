@@ -43,6 +43,11 @@ The application is modified according to https://www.tutorialworks.com/spring-bo
 
 ```
 
+To generate consistent traffic, run the curl every 15s
+```
+while sleep 15; do curl 'http://localhost:8080/owners'; done
+```
+
 You can access the metrics here: http://localhost:8080/actuator/prometheus
 ```
 # HELP owner_find_time_seconds_max Time taken to find owner
