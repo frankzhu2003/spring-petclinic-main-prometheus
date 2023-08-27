@@ -47,9 +47,9 @@ This application is modified according to https://www.tutorialworks.com/spring-b
 
 ### Generate demo traffic
 
-To generate consistent demo traffic, run the curl every 15s
+To generate consistent demo traffic, run the curl every 5s
 ```
-while sleep 15; do curl 'http://localhost:8080/owners'; done
+while sleep 5; do curl 'http://localhost:8080/owners'; done
 ```
 
 ### Access the custom metrics
